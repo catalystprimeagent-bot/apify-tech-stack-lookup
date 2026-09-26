@@ -7,6 +7,10 @@ TLS certificate issuer, and mail provider.**
 No headless browser, no residential proxy, one HTTP GET plus a handful of DNS/TLS lookups per
 domain. Built to run in 256 MB and finish in seconds.
 
+**Run it on Apify:** [https://apify.com/catalyst_prime/tech-stack-lookup](https://apify.com/catalyst_prime/tech-stack-lookup)
+
+Free to run, no setup. You only use your own Apify account's included usage.
+
 ## Input
 
 Give it one or more domains via `urls` (a JSON array, a single string, or a comma/newline
@@ -92,3 +96,12 @@ whether a match counts at all, then discards it. When `include_confidence` is on
 reports a coarse two-tier estimate instead of pretending to replicate a score it doesn't have:
 `100` when a version number was extracted (implies a specific, high-precision pattern match),
 `85` otherwise.
+
+## Example tasks
+
+Saved, pre-configured runs you can try without writing any input:
+
+- [Which sites use Cloudflare](https://apify.com/catalyst_prime/tech-stack-lookup/examples/which-sites-use-cloudflare)
+- [Find expiring SSL certificates](https://apify.com/catalyst_prime/tech-stack-lookup/examples/find-expiring-ssl-certificates)
+- [Compare competitor tech stacks](https://apify.com/catalyst_prime/tech-stack-lookup/examples/compare-competitor-tech-stacks)
+- [Find a company's email provider](https://apify.com/catalyst_prime/tech-stack-lookup/examples/find-company-email-provider)
