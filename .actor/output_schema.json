@@ -1,0 +1,13 @@
+{
+  "actorOutputSchemaVersion": 1,
+  "title": "Tech Stack & Infrastructure Lookup output",
+  "description": "One dataset row per input domain: detected technologies plus DNS, CDN, TLS certificate issuer and mail provider. See dataset_schema.json for the full field list.",
+  "properties": {
+    "results": {
+      "title": "Dataset items",
+      "type": "string",
+      "template": "{{links.apiDefaultDatasetUrl}}/items",
+      "description": "The full set of lookup results, one item per input domain."
+    }
+  }
+}

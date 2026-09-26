@@ -1,0 +1,130 @@
+{
+  "actorSpecification": 1,
+  "fields": {
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+      "url": {
+        "type": "string",
+        "title": "URL",
+        "description": "The URL that was looked up, as resolved from the input (scheme added if missing).",
+        "example": "https://stripe.com"
+      },
+      "domain": {
+        "type": "string",
+        "title": "Domain",
+        "description": "The bare domain, with scheme and path stripped.",
+        "example": "stripe.com"
+      },
+      "technologies": {
+        "type": "array",
+        "title": "Technologies",
+        "description": "Every detected technology, with category, version (if include_versions is on) and confidence score (if include_confidence is on).",
+        "example": [
+          { "name": "Nginx", "categories": ["Web servers", "Reverse proxies"], "confidence": 85 }
+        ]
+      },
+      "techNames": {
+        "type": "array",
+        "title": "Technology names",
+        "description": "Flat list of detected technology names, for quick scanning without unpacking the technologies array.",
+        "example": ["Amazon S3", "Amazon Web Services", "HSTS", "Nginx"]
+      },
+      "techCount": {
+        "type": "integer",
+        "title": "Technology count",
+        "description": "Number of technologies detected on this domain, after any categories_filter is applied.",
+        "example": 4
+      },
+      "dns": {
+        "type": "object",
+        "title": "DNS records",
+        "description": "Resolved A, AAAA, CNAME and NS records. Carries its own error field if DNS resolution failed for this domain.",
+        "example": {
+          "a": ["198.137.150.231", "198.202.176.231"],
+          "ns": ["ns-1087.awsdns-07.org", "ns-423.awsdns-52.com"]
+        }
+      },
+      "cdn": {
+        "type": "string",
+        "title": "CDN",
+        "description": "Detected content delivery network, when one was identified. Omitted from the row entirely when no CDN was detected.",
+        "example": "Cloudflare"
+      },
+      "tls": {
+        "type": "object",
+        "title": "TLS certificate",
+        "description": "Certificate issuer, subject and expiry read from the TLS handshake on port 443. Omitted from the row entirely when the domain has no HTTPS. Carries its own error field if the handshake failed.",
+        "example": {
+          "issuer": "DigiCert Global G3 TLS ECC SHA384 2020 CA1",
+          "subject": "stripe.com",
+          "notAfter": "2026-11-12T23:59:59Z",
+          "daysUntilExpiry": 49
+        }
+      },
+      "mail": {
+        "type": "object",
+        "title": "Mail provider",
+        "description": "MX records and the guessed mail provider. Carries its own error field if MX lookup failed for this domain.",
+        "example": {
+          "records": ["aspmx.l.google.com", "alt1.aspmx.l.google.com"],
+          "provider": "Google Workspace"
+        }
+      },
+      "httpStatus": {
+        "type": "integer",
+        "title": "HTTP status",
+        "description": "Status code returned by the one homepage GET request. Omitted from the row entirely when the request never completed.",
+        "example": 200
+      },
+      "charged": {
+        "type": "boolean",
+        "title": "Charged",
+        "description": "Whether this row's lookup was billed under pay-per-event. Always false while the Actor has no price set.",
+        "example": false
+      },
+      "error": {
+        "type": "string",
+        "title": "Error",
+        "description": "Set when the input entry could not be turned into a usable domain at all. Per-lookup failures (DNS/TLS/mail) instead live in dns.error / tls.error / mail.error so the rest of the row still comes back populated.",
+        "example": ""
+      }
+    },
+    "required": ["url", "domain", "technologies", "techNames", "techCount", "dns", "mail", "charged"]
+  },
+  "views": {
+    "overview": {
+      "title": "Overview",
+      "description": "One row per domain: what was detected plus the infrastructure fields the incumbent doesn't report.",
+      "transformation": {
+        "fields": [
+          "domain",
+          "techCount",
+          "techNames",
+          "cdn",
+          "tls.issuer",
+          "tls.daysUntilExpiry",
+          "mail.provider",
+          "httpStatus",
+          "charged",
+          "error"
+        ]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "domain": { "label": "Domain", "format": "text" },
+          "techCount": { "label": "# Tech", "format": "number" },
+          "techNames": { "label": "Technologies", "format": "array" },
+          "cdn": { "label": "CDN", "format": "text" },
+          "tls.issuer": { "label": "TLS Issuer", "format": "text" },
+          "tls.daysUntilExpiry": { "label": "TLS Expires (days)", "format": "number" },
+          "mail.provider": { "label": "Mail Provider", "format": "text" },
+          "httpStatus": { "label": "HTTP Status", "format": "number" },
+          "charged": { "label": "Charged", "format": "boolean" },
+          "error": { "label": "Error", "format": "text" }
+        }
+      }
+    }
+  }
+}

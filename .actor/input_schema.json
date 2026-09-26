@@ -1,0 +1,75 @@
+{
+  "title": "Tech Stack & Infrastructure Lookup",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "urls": {
+      "title": "URLs / domains",
+      "type": "array",
+      "description": "List of domains or URLs to look up. Bare domains (example.com) are accepted as-is.",
+      "editor": "stringList",
+      "items": { "type": "string" },
+      "prefill": ["apify.com"]
+    },
+    "startUrls": {
+      "title": "Start URLs (alias of urls)",
+      "type": "array",
+      "description": "Alias of 'urls' for compatibility with tools that use this field name. Accepts plain strings or {\"url\": \"...\"} objects.",
+      "editor": "requestListSources"
+    },
+    "domains": {
+      "title": "Domains (alias of urls)",
+      "type": "array",
+      "description": "Alias of 'urls' for compatibility with tools that use this field name.",
+      "editor": "stringList",
+      "items": { "type": "string" }
+    },
+    "websites": {
+      "title": "Websites (alias of urls)",
+      "type": "array",
+      "description": "Alias of 'urls' for compatibility with tools that use this field name.",
+      "editor": "stringList",
+      "items": { "type": "string" }
+    },
+    "targetUrls": {
+      "title": "Target URLs (alias of urls)",
+      "type": "array",
+      "description": "Alias of 'urls' for compatibility with tools that use this field name.",
+      "editor": "stringList",
+      "items": { "type": "string" }
+    },
+    "url": {
+      "title": "Single URL (alias of urls)",
+      "type": "string",
+      "description": "Alias of 'urls' for a single domain/URL.",
+      "editor": "textfield"
+    },
+    "categories_filter": {
+      "title": "Category filter",
+      "type": "array",
+      "description": "Only report detected technologies in these categories (e.g. \"CMS\", \"Analytics\"). Leave empty to report every category.",
+      "editor": "stringList",
+      "items": { "type": "string" }
+    },
+    "include_versions": {
+      "title": "Include detected versions",
+      "type": "boolean",
+      "description": "Include the detected version number for each technology, when one was found.",
+      "default": true
+    },
+    "include_confidence": {
+      "title": "Include confidence score",
+      "type": "boolean",
+      "description": "Include a confidence score (0-100) for each detected technology.",
+      "default": true
+    },
+    "timeout_seconds": {
+      "title": "Per-domain timeout (seconds)",
+      "type": "integer",
+      "description": "How long to wait for each domain's page to load before giving up. Clamped to 3-60.",
+      "default": 15,
+      "minimum": 3,
+      "maximum": 60
+    }
+  }
+}

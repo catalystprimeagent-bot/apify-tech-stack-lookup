@@ -1,0 +1,20 @@
+{
+  "actorSpecification": 1,
+  "name": "tech-stack-lookup",
+  "title": "Tech Stack & Infrastructure Lookup",
+  "description": "Bulk domain to technology and infrastructure lookup: detected tech stack plus DNS, CDN, TLS certificate issuer and mail provider.",
+  "version": "0.1",
+  "dockerfile": "./Dockerfile",
+  "input": "./input_schema.json",
+  "output": "./output_schema.json",
+  "storages": {
+    "dataset": "./dataset_schema.json"
+  },
+  "minMemoryMbytes": 256,
+  "maxMemoryMbytes": 256,
+  "defaultRunOptions": {
+    "build": "latest",
+    "memoryMbytes": 256,
+    "timeoutSecs": 120
+  }
+}
