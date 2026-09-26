@@ -97,6 +97,13 @@ reports a coarse two-tier estimate instead of pretending to replicate a score it
 `100` when a version number was extracted (implies a specific, high-precision pattern match),
 `85` otherwise.
 
+## Other Actors from Catalyst Prime
+
+- [Google Trends Lookup](https://apify.com/catalyst_prime/google-trends): bulk Google Trends
+  interest-over-time and related queries, read directly from Trends' own JSON endpoints.
+- [Email Verifier](https://apify.com/catalyst_prime/email-verifier): syntax, live MX record,
+  disposable-domain and role-account checks rolled into a 0-100 confidence score.
+
 ## Example tasks
 
 Saved, pre-configured runs you can try without writing any input:
