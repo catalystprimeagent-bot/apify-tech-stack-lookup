@@ -1,10 +1,14 @@
-# Tech Stack & Infrastructure Lookup
+# Tech Stack, CDN & SSL Certificate Lookup
 
-Bulk domain lookup. For each domain you get the detected technology stack (CMS, analytics,
-frameworks, etc.) plus four things most tech-stack tools don't report: **DNS records, CDN,
-TLS certificate issuer, and mail provider.**
+Give it a list of domains. Each one comes back as a single row with five things: the **technology
+stack** (CMS, analytics, frameworks), the **CDN** in front of it, its **DNS records**, its **SSL
+certificate** issuer and expiry date, and its **mail provider**.
 
-No headless browser, no residential proxy, one HTTP GET plus a handful of DNS/TLS lookups per
+Most tech-stack tools report only the first of those. So if the question you actually have is
+"which of these sites sit behind Cloudflare", "whose certificate expires in the next 30 days", or
+"who handles this company's email", this answers it in one pass.
+
+No headless browser, no residential proxy, one HTTP GET plus a handful of DNS and TLS lookups per
 domain. Built to run in 256 MB and finish in seconds.
 
 **Run it on Apify:** [https://apify.com/catalyst_prime/tech-stack-lookup](https://apify.com/catalyst_prime/tech-stack-lookup)

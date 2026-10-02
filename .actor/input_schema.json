@@ -1,5 +1,5 @@
 {
-  "title": "Tech Stack & Infrastructure Lookup",
+  "title": "Tech Stack, CDN & SSL Certificate Lookup",
   "type": "object",
   "schemaVersion": 1,
   "properties": {
@@ -8,8 +8,12 @@
       "type": "array",
       "description": "List of domains or URLs to look up. Bare domains (example.com) are accepted as-is.",
       "editor": "stringList",
-      "items": { "type": "string" },
-      "prefill": ["apify.com"]
+      "items": {
+        "type": "string"
+      },
+      "prefill": [
+        "apify.com"
+      ]
     },
     "startUrls": {
       "title": "Start URLs (alias of urls)",
@@ -22,21 +26,27 @@
       "type": "array",
       "description": "Alias of 'urls' for compatibility with tools that use this field name.",
       "editor": "stringList",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "websites": {
       "title": "Websites (alias of urls)",
       "type": "array",
       "description": "Alias of 'urls' for compatibility with tools that use this field name.",
       "editor": "stringList",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "targetUrls": {
       "title": "Target URLs (alias of urls)",
       "type": "array",
       "description": "Alias of 'urls' for compatibility with tools that use this field name.",
       "editor": "stringList",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "url": {
       "title": "Single URL (alias of urls)",
@@ -49,7 +59,9 @@
       "type": "array",
       "description": "Only report detected technologies in these categories (e.g. \"CMS\", \"Analytics\"). Leave empty to report every category.",
       "editor": "stringList",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "include_versions": {
       "title": "Include detected versions",
